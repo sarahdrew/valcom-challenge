@@ -78,9 +78,33 @@ movieRouter
             })
             .catch(next)
     })
-
-
-
     //Update a movie via ID or Title
+    .put(jsonParser, (req, res, next) => {
+        const { title, overview, release_date } = req.body
+        const movieToUpdate = { title, overview, release_date }
+        movieToUpdate.id = req.params.movieId;
+
+        const numberofValues = Object.value(movieToUpdate).filter(Boolean).length
+        if (numberofValues === 0)
+            return res.status(400).json({
+                error: {
+                    message: `Request body must contain either a title or overview or release date`
+                }
+            })
+
+        MovieService.updateMovie(
+            req.app.get('db'),
+            req.params.movieId,
+            movieToUpdate
+        )
+            .then(movie => {
+                res
+                    .status(200)
+                    .json(response)
+                    .end()
+            })
+            .catch(next)
+    })
+module.exports = movieRouter
 
     //Search a movie via Title

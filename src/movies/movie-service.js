@@ -18,5 +18,16 @@ const MovieService = {
             .select('*')
             .where('id', id).first()
     },
-
+    deleteMovie(knex, id) {
+        return knex('movies')
+            .where({ id })
+            .delete()
+    },
+    updateMovie(knex, id, newMovieFields) {
+        return knex('movies')
+            .where({ id })
+            .update(newMovieFields)
+            .returning('*')
+    }
 }
+module.exports = MovieService

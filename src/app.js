@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
 const { NODE_ENV } = require("./config");
+const movieRouter = require('./movies/movie-router');
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");
@@ -12,6 +13,10 @@ app.get("/", (req, res) => {
 const app = express();
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
+
+//Use movie router with API URL to distingush what's coming from API
+app.use('api/movies', movieRouter)
+
 
 app.use(morgan(morganOption));
 app.use(cors());

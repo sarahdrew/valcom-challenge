@@ -12,5 +12,11 @@ const MovieService = {
             .then(rows => {
                 return rows[0]
             })
-    }
+    },
+    getById(knex, id) {
+        return knex.from('movies')
+            .select('*')
+            .where('id', id).first()
+    },
+
 }

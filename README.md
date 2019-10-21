@@ -1,6 +1,6 @@
 # Valcom Challenge for Software Engineer
 
-Coding challenge completed for Software Engineer role at Valcom. A Restful API created in 1 hour time limit using re-usable Javascript code.
+Coding challenge completed for Software Engineer role at Valcom. A Restful API created in **1 hour time limit** using re-usable Javascript code.
 
 Created a DB using SQL, added seeds as example
 MovieService created as a place to store methods to put on object 
@@ -11,9 +11,9 @@ Created movieRouter which uses MovieService to list all movies, create a movie, 
 
 ## Routes
 
-/movies
+_/movies_
    - get, post
-    /:movieId
+  -   _/:movieId_
         - get, put, delete
 
 
